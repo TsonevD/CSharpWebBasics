@@ -19,6 +19,8 @@
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
+                    @if(User == null)
+                    {
                     <li class="nav-item">
                         <a class="nav-link text-white active h5" href="/">Home</a>
                     </li>
@@ -27,6 +29,12 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white active h5" href="/Users/Register">Register</a>
+                    </li>
+                    }
+                    @if(User !=null)
+                    {
+                    <li class="nav-item">
+                        <a class="nav-link text-white active h5" href="/Cards/All">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white active h5" href="/Cards/Add">Add Card</a>
@@ -37,6 +45,7 @@
                     <li class="nav-item">
                         <a class="nav-link text-danger active h5" href="/Logout">Logout</a>
                     </li>
+                    }
                 </ul>
             </div>
         </nav>

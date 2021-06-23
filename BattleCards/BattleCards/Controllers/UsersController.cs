@@ -46,7 +46,7 @@ namespace BattleCards.Controllers
             }
             this.SignIn(userId);
 
-            return Redirect("/");
+            return Redirect("/Cards/All");
         }
         [HttpPost]
         public HttpResponse Register(UserRegistrationViewModel model)

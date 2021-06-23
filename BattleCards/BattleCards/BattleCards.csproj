@@ -39,7 +39,7 @@
     <None Update="Views\Home\Index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Views\Shared\Error.html">
+    <None Update="Views\Error.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Views\Shared\_Layout.html">
@@ -105,10 +105,6 @@
     <None Update="wwwroot\js\custom.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-  
-  <ItemGroup>
-    <Folder Include="Services\" />
   </ItemGroup>
   
   <ItemGroup>

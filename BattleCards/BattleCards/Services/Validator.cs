@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using BattleCards.Models;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
+using BattleCards.Models.Cards;
 
 namespace BattleCards.Services
 {
@@ -20,7 +20,7 @@ namespace BattleCards.Services
             {
                 errors.Add($"Password must be between {PasswordMinLength} and {UserDefaultMaxLength} symbols.");
             }
-            if (Regex.IsMatch(model.Email, UserEmailRegularExpression))
+            if (!Regex.IsMatch(model.Email, UserEmailRegularExpression))
             {
                 errors.Add("Invalid email address.");
             }
@@ -46,5 +46,26 @@ namespace BattleCards.Services
             return errors;
         }
 
+        public ICollection<string> ValidateNewCard(AddNewCadInputModel model)
+        {
+            var errors = new List<string>();
+            if (model.Name.Length < CardNameMinLength || model.Name.Length > CardNameMaxLength)
+            {
+                errors.Add($"Name {model.Name} must be between {CardNameMinLength} and {CardNameMaxLength} symbols.");
+            }
+            if (model.Attack < CardHealthAndAttackMinLength)
+            {
+                errors.Add($"Attack cannot be below {CardHealthAndAttackMinLength}.");
+            }
+            if (model.Health < CardHealthAndAttackMinLength)
+            {
+                errors.Add($"Health cannot be below {CardHealthAndAttackMinLength}.");
+            }
+            if (model.Description.Length > CardDescriptionMaxLength)
+            {
+                errors.Add($"Description cannot be more than {CardDescriptionMaxLength} symbols.");
+            }
+            return errors;
+        }
     }
 }
