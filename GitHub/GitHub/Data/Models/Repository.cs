@@ -17,11 +17,11 @@ namespace GitHub.Data.Models
 
         public bool IsPublic { get; set; }
 
-        public string OwnedId { get; set; }
+        public string OwnerId { get; set; }
 
         public User Owner { get; set; }
 
-        private IEnumerable<Commit> Commits { get; init; } = new List<Commit>();
+        public IEnumerable<Commit> Commits { get; init; } = new List<Commit>();
     }
 }
 //•	Has an Id – a string, Primary Key

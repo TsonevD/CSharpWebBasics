@@ -4,14 +4,16 @@ using GitHub.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GitHub.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210624131454_ChangeNameOfRepositoryDB")]
+    partial class ChangeNameOfRepositoryDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -102,7 +104,7 @@ namespace GitHub.Data.Migrations
                         .HasForeignKey("CreatorId");
 
                     b.HasOne("GitHub.Data.Models.Repository", "Repository")
-                        .WithMany("Commits")
+                        .WithMany()
                         .HasForeignKey("RepositoryId");
 
                     b.Navigation("Creator");
@@ -117,11 +119,6 @@ namespace GitHub.Data.Migrations
                         .HasForeignKey("OwnerId");
 
                     b.Navigation("Owner");
-                });
-
-            modelBuilder.Entity("GitHub.Data.Models.Repository", b =>
-                {
-                    b.Navigation("Commits");
                 });
 
             modelBuilder.Entity("GitHub.Data.Models.User", b =>

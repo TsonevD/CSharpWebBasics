@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using GitHub.Data;
+using GitHub.Models.Commits;
+using GitHub.Models.Repositories;
 using GitHub.Models.Users;
 using GitHub.Services.Contacts;
 
@@ -46,5 +48,24 @@ namespace GitHub.Services
             return errors;
         }
 
+        public ICollection<string> ValidateRepository(CreateRepositoryInputModel model)
+        {
+            var errors = new List<string>();
+            if (model.Name.Length < RepositoryNameMinLength || model.Name.Length > RepositoryNameMaxLength)
+            {
+                errors.Add($"Repository {model.Name} must be between {RepositoryNameMinLength} and {RepositoryNameMaxLength} symbols.");
+            }
+            return errors;
+        }
+
+        public ICollection<string> ValidateCommit(CreateCommitInputModel model)
+        {
+            var errors = new List<string>();
+            if (model.Description.Length < CommitDescriptionMinLength)
+            {
+                errors.Add($"Description {model.Description} must be more than {CommitDescriptionMinLength} symbols.");
+            }
+            return errors;
+        }
     }
 }
