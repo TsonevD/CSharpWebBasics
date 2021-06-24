@@ -20,6 +20,7 @@ namespace GitHub
                     .Add<IViewEngine, CompilationViewEngine>()
                     .Add<ApplicationDbContext>()
                     .Add<IValidator , Validator>()
+                    .Add<IUsersService, UserService>()
                     .Add<IPasswordHasher, PasswordHasher>())
                 .WithConfiguration<ApplicationDbContext>(c => c.Database.Migrate())
 

@@ -9,5 +9,8 @@
         string GetUserId(string username, string password);
 
         bool IsUsernameAvailable(string username);
+
+        string HashPassword(string password);
+
     }
 }

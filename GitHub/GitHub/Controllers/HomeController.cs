@@ -7,6 +7,10 @@ namespace GitHub.Controllers
     {
         public HttpResponse Index()
         {
+            if (this.User.IsAuthenticated)
+            {
+                return Redirect("/Repositories/All");
+            }
             return this.View();
         }
     }
